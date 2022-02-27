@@ -1,0 +1,66 @@
+<!Doctype>
+<html>
+<head>
+ <title>Stop Random Color</title>
+ 
+ <style>
+ *{
+ margin:0;
+ padding:0;
+ box-sizing:border-box;
+ border:none;
+ outline:none;
+ }
+
+ div{
+ display:flex;
+ flex-direction:column;
+ height:100vh;
+ justify-content:center;
+ align-items:center;
+ }
+ 
+ 
+ button{
+ padding:1rem 1.5rem;
+ cursor:pointer;
+ font-size:3rem;
+ box-shadow:0px 0px 10px rgba(0,0,0,.337);
+ transition: all .4s;
+ }
+ 
+ button:hover{
+ box-shadow:0px 0px 25px rgba(0,0,0,.337)
+ }
+ </style>
+</head>
+<body>
+<div> 
+       <button> Stop Changing the background Color</button>
+</div>
+  
+
+
+<script>
+
+const body = document.querySelector("body");
+const button=document.querySelector("button");
+console.log(button);
+//console.log(body);
+
+const id=setInterval(()=>{
+    const red=Math.floor(Math.random()*126);
+	const green=Math.floor(Math.random()*126);
+	const blue=Math.floor(Math.random()*126);
+	//console.log(red)
+	const rgb=`rgb(${red},${green},${blue})`
+	//console.log(rgb)
+	body.style.background=rgb;
+},1000);
+button.addEventListener("click",()=>{
+clearInterval(id);
+button.textContent=body.style.background;
+})
+</script>
+</body>
+</html>
